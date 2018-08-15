@@ -1,0 +1,27 @@
+USE [InterviewQuestionVictimSelector]
+GO
+
+/****** Object:  Table [dbo].[STUDENTS]    Script Date: 8/10/2018 11:59:35 AM ******/
+DROP TABLE [dbo].[STUDENTS]
+GO
+
+/****** Object:  Table [dbo].[STUDENTS]    Script Date: 8/10/2018 11:59:35 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[STUDENTS](
+	[STUDENT_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[FIRST_NAME] [varchar](255) NOT NULL,
+	[LAST_NAME] [varchar](255) NOT NULL,
+	[SELECTED] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[STUDENT_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
