@@ -61,7 +61,7 @@
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(657, 379);
+            this.btnSelect.Location = new System.Drawing.Point(716, 318);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(119, 34);
             this.btnSelect.TabIndex = 0;
@@ -72,15 +72,13 @@
             // lblCurrentVictim
             // 
             this.lblCurrentVictim.AutoSize = true;
-            this.lblCurrentVictim.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.lblCurrentVictim.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblCurrentVictim.BackColor = System.Drawing.Color.Transparent;
             this.lblCurrentVictim.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrentVictim.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblCurrentVictim.Location = new System.Drawing.Point(301, 436);
+            this.lblCurrentVictim.Location = new System.Drawing.Point(360, 375);
             this.lblCurrentVictim.Name = "lblCurrentVictim";
-            this.lblCurrentVictim.Size = new System.Drawing.Size(129, 28);
+            this.lblCurrentVictim.Size = new System.Drawing.Size(0, 26);
             this.lblCurrentVictim.TabIndex = 1;
-            this.lblCurrentVictim.Text = "Click Select";
             // 
             // interviewQuestionVictimSelector
             // 
@@ -96,7 +94,7 @@
             // 
             this.lblPoolOfNames.AutoSize = true;
             this.lblPoolOfNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPoolOfNames.Location = new System.Drawing.Point(80, 121);
+            this.lblPoolOfNames.Location = new System.Drawing.Point(139, 60);
             this.lblPoolOfNames.Name = "lblPoolOfNames";
             this.lblPoolOfNames.Size = new System.Drawing.Size(162, 26);
             this.lblPoolOfNames.TabIndex = 3;
@@ -106,7 +104,7 @@
             // 
             this.lvNamePool.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.lvNamePool.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvNamePool.Location = new System.Drawing.Point(301, 121);
+            this.lvNamePool.Location = new System.Drawing.Point(360, 60);
             this.lvNamePool.Name = "lvNamePool";
             this.lvNamePool.Size = new System.Drawing.Size(475, 232);
             this.lvNamePool.TabIndex = 4;
@@ -118,7 +116,7 @@
             this.lblCurrentVictimLabel.AutoSize = true;
             this.lblCurrentVictimLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrentVictimLabel.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.lblCurrentVictimLabel.Location = new System.Drawing.Point(85, 438);
+            this.lblCurrentVictimLabel.Location = new System.Drawing.Point(144, 377);
             this.lblCurrentVictimLabel.Name = "lblCurrentVictimLabel";
             this.lblCurrentVictimLabel.Size = new System.Drawing.Size(157, 26);
             this.lblCurrentVictimLabel.TabIndex = 5;
@@ -128,7 +126,7 @@
             // 
             this.lblQuestionLabel.AutoSize = true;
             this.lblQuestionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuestionLabel.Location = new System.Drawing.Point(137, 58);
+            this.lblQuestionLabel.Location = new System.Drawing.Point(196, 446);
             this.lblQuestionLabel.Name = "lblQuestionLabel";
             this.lblQuestionLabel.Size = new System.Drawing.Size(105, 26);
             this.lblQuestionLabel.TabIndex = 7;
@@ -137,14 +135,12 @@
             // lblQuestionBox
             // 
             this.lblQuestionBox.AutoSize = true;
-            this.lblQuestionBox.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.lblQuestionBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblQuestionBox.BackColor = System.Drawing.Color.Transparent;
             this.lblQuestionBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuestionBox.Location = new System.Drawing.Point(301, 56);
+            this.lblQuestionBox.Location = new System.Drawing.Point(360, 444);
             this.lblQuestionBox.Name = "lblQuestionBox";
-            this.lblQuestionBox.Size = new System.Drawing.Size(129, 28);
+            this.lblQuestionBox.Size = new System.Drawing.Size(0, 26);
             this.lblQuestionBox.TabIndex = 8;
-            this.lblQuestionBox.Text = "Click Select";
             // 
             // tabControl1
             // 
@@ -153,7 +149,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 42);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1053, 551);
+            this.tabControl1.Size = new System.Drawing.Size(1099, 582);
             this.tabControl1.TabIndex = 9;
             // 
             // mainTab
@@ -168,10 +164,11 @@
             this.mainTab.Location = new System.Drawing.Point(4, 22);
             this.mainTab.Name = "mainTab";
             this.mainTab.Padding = new System.Windows.Forms.Padding(3);
-            this.mainTab.Size = new System.Drawing.Size(1045, 525);
+            this.mainTab.Size = new System.Drawing.Size(1091, 556);
             this.mainTab.TabIndex = 0;
             this.mainTab.Text = "Main";
             this.mainTab.UseVisualStyleBackColor = true;
+            this.mainTab.Click += new System.EventHandler(this.mainTab_Click);
             // 
             // editTab
             // 
@@ -193,7 +190,7 @@
             this.editTab.Location = new System.Drawing.Point(4, 22);
             this.editTab.Name = "editTab";
             this.editTab.Padding = new System.Windows.Forms.Padding(3);
-            this.editTab.Size = new System.Drawing.Size(1045, 525);
+            this.editTab.Size = new System.Drawing.Size(1091, 556);
             this.editTab.TabIndex = 1;
             this.editTab.Text = "Edit";
             this.editTab.UseVisualStyleBackColor = true;
@@ -291,7 +288,7 @@
             // txtSelectedQuestion
             // 
             this.txtSelectedQuestion.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtSelectedQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSelectedQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSelectedQuestion.Location = new System.Drawing.Point(239, 101);
             this.txtSelectedQuestion.Multiline = true;
             this.txtSelectedQuestion.Name = "txtSelectedQuestion";
@@ -352,7 +349,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 605);
+            this.ClientSize = new System.Drawing.Size(1123, 636);
             this.Controls.Add(this.interviewQuestionVictimSelector);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
