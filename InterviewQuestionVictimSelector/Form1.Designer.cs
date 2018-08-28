@@ -237,6 +237,7 @@
             this.btnAddName.TabIndex = 11;
             this.btnAddName.Text = "Add";
             this.btnAddName.UseVisualStyleBackColor = true;
+            this.btnAddName.Click += new System.EventHandler(this.btnAddName_Click);
             // 
             // btnDeleteName
             // 
@@ -305,6 +306,7 @@
             this.btnAddQuestion.TabIndex = 4;
             this.btnAddQuestion.Text = "Add";
             this.btnAddQuestion.UseVisualStyleBackColor = true;
+            this.btnAddQuestion.Click += new System.EventHandler(this.btnAddQuestion_Click);
             // 
             // btnDeleteQuestion
             // 
