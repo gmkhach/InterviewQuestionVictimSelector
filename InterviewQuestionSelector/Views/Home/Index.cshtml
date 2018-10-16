@@ -9,6 +9,11 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap-theme.css" />
+    <style>
+        .btn a {color: white;text-decoration: none}
+        body {background-color: #F1F1F1}
+    </style>
     <title>MainForm</title>
 </head>
 <body>
@@ -16,15 +21,15 @@
         <div class="text-center">
             <h2>Interview Question Selector</h2>
         </div>
-        <div class="form-group">
+        <div class="form-group" margin="50px">
             <table>
                 <tr>
-                    <td><label class="custom-control-label">Pool of names:</label></td>
+                    <td><label>Pool of names:</label></td>
                     <rd><!--control vor listview--></rd>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><button class="btn">Select</button></td>
+                    <td><button class="btn btn-success">Select</button></td>
                 </tr>
                 <tr>
                     <td><label>Current Victim: </label></td>
