@@ -29,8 +29,7 @@ namespace InterviewQuestionVictimSelector
         private static DataTable table = new DataTable();
         private static Random rnd = new Random();
 
-
-        private List<List<string>> myList = new List<List<string>>();
+        private List<List<string>> questionList = new List<List<string>>();
         private List<List<string>> nameList = new List<List<string>>();
 
         // Fills the ListView namePool with the names of the students.
@@ -73,19 +72,19 @@ namespace InterviewQuestionVictimSelector
                 questions.Add(currentItem);
             }
             table.Clear();
-            myList = questions;
+            questionList = questions;
         }
 
         // Randomly selects a student (from the namePool) and a questions (from the question list).
         private void select_Click(object sender, EventArgs e)
         {
-            int countQuestions = myList.Count;
+            int countQuestions = questionList.Count;
             int i = rnd.Next(countQuestions);
-            lblQuestionBox.Text = myList[i][1];
+            lblQuestionBox.Text = questionList[i][1];
             // Marks selected question as SELECTED in database
             UpdateQuestionSelected(i);
             // Deletes selected question from questionList
-            myList.Remove(myList[i]);
+            questionList.Remove(questionList[i]);
             int countNames = lvNamePool.Items.Count;
             int j = rnd.Next(countNames);
             lblCurrentVictim.Text = lvNamePool.Items[j].Text;
@@ -124,8 +123,8 @@ namespace InterviewQuestionVictimSelector
         private void UpdateQuestionSelected(int i)
         {
             cmd.CommandText = "UPDATE_QUESTIONS";
-            cmd.Parameters.Add("@QUESTION_ID", SqlDbType.BigInt).Value = Int64.Parse(myList[i][0]);
-            cmd.Parameters.Add("@QUESTION", SqlDbType.VarChar).Value = myList[i][1];
+            cmd.Parameters.Add("@QUESTION_ID", SqlDbType.BigInt).Value = Int64.Parse(questionList[i][0]);
+            cmd.Parameters.Add("@QUESTION", SqlDbType.VarChar).Value = questionList[i][1];
             cmd.Parameters.Add("@SELECTED", SqlDbType.Bit).Value = 1;
             ExecuteNonQuery();
             cmd.Parameters.Clear();
