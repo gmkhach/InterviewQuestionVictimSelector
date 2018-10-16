@@ -168,7 +168,6 @@
             this.mainTab.TabIndex = 0;
             this.mainTab.Text = "Main";
             this.mainTab.UseVisualStyleBackColor = true;
-            this.mainTab.Click += new System.EventHandler(this.mainTab_Click);
             // 
             // editTab
             // 
