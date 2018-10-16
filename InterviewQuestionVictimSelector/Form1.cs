@@ -16,8 +16,8 @@ namespace InterviewQuestionVictimSelector
         public Form1()
         {
             cmd.CommandType = CommandType.StoredProcedure;
-            InitializeComponent();
             populateNamePool();
+            InitializeComponent();
             resetQuestionPool();
             populateSelectQuestion();
             populateSelectName();
@@ -30,8 +30,8 @@ namespace InterviewQuestionVictimSelector
         private static Random rnd = new Random();
 
 
-        List<List<string>> myList = new List<List<string>>();
-        List<List<string>> nameList = new List<List<string>>();
+        private List<List<string>> myList = new List<List<string>>();
+        private List<List<string>> nameList = new List<List<string>>();
 
         // Fills the ListView namePool with the names of the students.
         public void populateNamePool()
