@@ -13,23 +13,27 @@ namespace InterviewQuestionVictimSelector
 {
     public partial class Form1 : Form
     {
-        private static SqlConnection conn = new SqlConnection("Data Source=THINKPAD-P71;Initial Catalog=VictimSelector;Integrated Security=True");
-        private static SqlCommand cmd = conn.CreateCommand();
-
-        List<List<string>> myList = new List<List<string>>();
-        List<List<string>> nameList = new List<List<string>>();
-        public Form1() 
+        public Form1()
         {
+            cmd.CommandType = CommandType.StoredProcedure;
             InitializeComponent();
             populateNamePool();
             resetQuestionPool();
             populateSelectQuestion();
             populateSelectName();
         }
+
+        private static SqlConnection conn = new SqlConnection("Data Source=THINKPAD-P71;Initial Catalog=VictimSelector;Integrated Security=True");
+        private static SqlCommand cmd = conn.CreateCommand();
+        private static Random rnd = new Random();
+
+
+        List<List<string>> myList = new List<List<string>>();
+        List<List<string>> nameList = new List<List<string>>();
+
         // Fills the ListView namePool with the names of the students.
         public void populateNamePool()
         {
-            cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GET_NOTSELECTED_STUDENTS";
             ExecuteNonQuery();
             
@@ -57,7 +61,6 @@ namespace InterviewQuestionVictimSelector
         // Resets te question list.
         private void resetQuestionPool()
         {
-            cmd.CommandType = CommandType.Text;
             cmd.CommandText = "GET_NOTSELECTED_QUESTIONS";
             ExecuteNonQuery();
 
@@ -78,7 +81,6 @@ namespace InterviewQuestionVictimSelector
         // Randomly selects a student (from the namePool) and a questions (from the question list).
         private void select_Click(object sender, EventArgs e)
         {
-            Random rnd = new Random();
             int countQuestions = myList.Count;
             int i = rnd.Next(countQuestions);
             lblQuestionBox.Text = myList[i][1];
@@ -111,7 +113,6 @@ namespace InterviewQuestionVictimSelector
         // Updates the SELECTED field of the Students table in the database
         private void UpdateStudentSelected(int i)
         {
-            cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "UPDATE_STUDENTS";
             cmd.Parameters.Add("@STUDENT_ID", SqlDbType.BigInt).Value = Int64.Parse(nameList[i][0]);
             cmd.Parameters.Add("@FIRST_NAME", SqlDbType.VarChar).Value = nameList[i][1];
@@ -124,7 +125,6 @@ namespace InterviewQuestionVictimSelector
         // Updates the SELECTED field of the Questions table in the database 
         private void UpdateQuestionSelected(int i)
         {
-            cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "UPDATE_QUESTIONS";
             cmd.Parameters.Add("@QUESTION_ID", SqlDbType.BigInt).Value = Int64.Parse(myList[i][0]);
             cmd.Parameters.Add("@QUESTION", SqlDbType.VarChar).Value = myList[i][1];
@@ -136,7 +136,6 @@ namespace InterviewQuestionVictimSelector
         // Resets the value of SELECTED field of the Questions table in the database
         private void Reset_Questions_SELECTED_Status()
         {
-            cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "RESET_SELECTED_QUESTIONS";
             ExecuteNonQuery();
         }
@@ -144,7 +143,6 @@ namespace InterviewQuestionVictimSelector
         // Resets the value of SELECTED field of the Students table in the database
         private void Reset_Students_SELECTED_Status()
         {
-            cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "RESET_SELECTED_STUDENTS";
             ExecuteNonQuery();
         }
@@ -153,7 +151,6 @@ namespace InterviewQuestionVictimSelector
         private void populateSelectQuestion()
         {
             List<List<string>> myList = new List<List<string>>();
-            cmd.CommandType = CommandType.Text;
             cmd.CommandText = "GET_QUESTIONS";
             ExecuteNonQuery();
             DataTable dt = new DataTable();
@@ -184,7 +181,6 @@ namespace InterviewQuestionVictimSelector
         {
 
             List < List<string> >myList = new List<List<string>>();
-            cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GET_STUDENTS";
             ExecuteNonQuery();
             DataTable dt = new DataTable();
@@ -227,7 +223,6 @@ namespace InterviewQuestionVictimSelector
         private void btnAddQuestion_Click(object sender, EventArgs e)
         {
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "INSERT_QUESTION";
             cmd.Parameters.Add("@QUESTION", SqlDbType.VarChar).Value = txtSelectedQuestion.Text;
             cmd.Parameters.Add("@SELECTED", SqlDbType.Bit).Value = 0;
@@ -238,7 +233,6 @@ namespace InterviewQuestionVictimSelector
         // Inserts a new record in the STUDENTS table of the database
         private void btnAddName_Click(object sender, EventArgs e)
         {
-            cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "INSERT_STUDENT";
             cmd.Parameters.Add("@FIRST_NAME", SqlDbType.VarChar).Value = txtFirstName.Text;
             cmd.Parameters.Add("@LAST_NAME", SqlDbType.VarChar).Value = txtLastName.Text;
