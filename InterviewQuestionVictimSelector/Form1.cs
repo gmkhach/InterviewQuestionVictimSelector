@@ -25,6 +25,8 @@ namespace InterviewQuestionVictimSelector
 
         private static SqlConnection conn = new SqlConnection("Data Source=THINKPAD-P71;Initial Catalog=VictimSelector;Integrated Security=True");
         private static SqlCommand cmd = conn.CreateCommand();
+        private static SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+        private static DataTable table = new DataTable();
         private static Random rnd = new Random();
 
 
@@ -36,13 +38,10 @@ namespace InterviewQuestionVictimSelector
         {
             cmd.CommandText = "GET_NOTSELECTED_STUDENTS";
             ExecuteNonQuery();
-            
-            DataTable dt = new DataTable();
-            SqlDataAdapter sa = new SqlDataAdapter(cmd);
-            sa.Fill(dt);
+            adapter.Fill(table);
             List<List<string>> currentRoster = new List<List<string>>();
             int run = 0;
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in table.Rows)
             {
                 List<string> currentItem = new List<string>();
                 currentItem.Add($"{row["STUDENT_ID"]}");
@@ -51,6 +50,7 @@ namespace InterviewQuestionVictimSelector
                 currentRoster.Add(currentItem);
                 run++;
             }
+            table.Clear();
             nameList = currentRoster;
             for (int i = 0; i <= currentRoster.Count - 1; i = i + 1)
             {
@@ -63,18 +63,16 @@ namespace InterviewQuestionVictimSelector
         {
             cmd.CommandText = "GET_NOTSELECTED_QUESTIONS";
             ExecuteNonQuery();
-
-            DataTable dt = new DataTable();
-            SqlDataAdapter sa = new SqlDataAdapter(cmd);
-            sa.Fill(dt);
+            adapter.Fill(table);
             List<List<string>> questions = new List<List<string>>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in table.Rows)
             {
                 List<string> currentItem = new List<string>();
                 currentItem.Add($"{row["QUESTION_ID"]}");
                 currentItem.Add($"{row["QUESTION"]}");
                 questions.Add(currentItem);
             }
+            table.Clear();
             myList = questions;
         }
 
@@ -153,18 +151,16 @@ namespace InterviewQuestionVictimSelector
             List<List<string>> myList = new List<List<string>>();
             cmd.CommandText = "GET_QUESTIONS";
             ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter sa = new SqlDataAdapter(cmd);
-            sa.Fill(dt);
-            conn.Close();
+            adapter.Fill(table);
             List<List<string>> questions = new List<List<string>>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in table.Rows)
             {
                 List<string> currentItem = new List<string>();
                 currentItem.Add($"{row["QUESTION_ID"]}");
                 currentItem.Add($"{row["QUESTION"]}");
                 questions.Add(currentItem);
             }
+            table.Clear();
             myList = questions;
 
             // populates the cmbSelectQuestion dropdown menu
@@ -183,12 +179,10 @@ namespace InterviewQuestionVictimSelector
             List < List<string> >myList = new List<List<string>>();
             cmd.CommandText = "GET_STUDENTS";
             ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter sa = new SqlDataAdapter(cmd);
-            sa.Fill(dt);
+            adapter.Fill(table);
             List<List<string>> currentRoster = new List<List<string>>();
             int run = 0;
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in table.Rows)
             {
                 List<string> currentItem = new List<string>();
                 currentItem.Add($"{row["STUDENT_ID"]}");
@@ -197,6 +191,7 @@ namespace InterviewQuestionVictimSelector
                 currentRoster.Add(currentItem);
                 run++;
             }
+            table.Clear();
             myList = currentRoster;
             for (int i = 0; i <= myList.Count() - 1; i = i + 1)
             {
@@ -222,7 +217,6 @@ namespace InterviewQuestionVictimSelector
         // Inserts a new record in the QUESTIONS table of the database.
         private void btnAddQuestion_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "INSERT_QUESTION";
             cmd.Parameters.Add("@QUESTION", SqlDbType.VarChar).Value = txtSelectedQuestion.Text;
             cmd.Parameters.Add("@SELECTED", SqlDbType.Bit).Value = 0;
