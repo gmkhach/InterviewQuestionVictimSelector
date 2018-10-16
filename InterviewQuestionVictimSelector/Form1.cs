@@ -98,12 +98,12 @@ namespace InterviewQuestionVictimSelector
 
             if (countNames == 1)
             {
-                Reset_Students_SELECTED_Status();
+                Reset_SELECTED_Status("RESET_SELECTED_STUDENTS");
                 populateNamePool();
             }
             if (countQuestions == 1)
             {
-                Reset_Questions_SELECTED_Status();
+                Reset_SELECTED_Status("RESET_SELECTED_QUESTIONS");
                 resetQuestionPool();
             }
         }
@@ -131,17 +131,10 @@ namespace InterviewQuestionVictimSelector
             cmd.Parameters.Clear();
         }
 
-        // Resets the value of SELECTED field of the Questions table in the database
-        private void Reset_Questions_SELECTED_Status()
+        // Resets the value of SELECTED field of the appropriate table in the database
+        private void Reset_SELECTED_Status(string commandText)
         {
-            cmd.CommandText = "RESET_SELECTED_QUESTIONS";
-            ExecuteNonQuery();
-        }
-
-        // Resets the value of SELECTED field of the Students table in the database
-        private void Reset_Students_SELECTED_Status()
-        {
-            cmd.CommandText = "RESET_SELECTED_STUDENTS";
+            cmd.CommandText = commandText;
             ExecuteNonQuery();
         }
 
@@ -168,8 +161,6 @@ namespace InterviewQuestionVictimSelector
             {
                 cmbSelectQuestion.Items.Add(myList[i][1]);
             }
-
-
         }
 
         // Creates the list of names in the cmbSelectName dropdown menu.
