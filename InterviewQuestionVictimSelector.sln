@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterviewQuestionVictimSelector", "InterviewQuestionVictimSelector\InterviewQuestionVictimSelector.csproj", "{B6963960-8A40-4EFD-9D48-DB723BB644C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterviewQuestionSelector", "InterviewQuestionSelector\InterviewQuestionSelector.csproj", "{E1926C3E-227A-4BC5-B69A-AC5AE3D24EA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterviewQuestionSelectorWebUI", "InterviewQuestionSelector\InterviewQuestionSelectorWebUI.csproj", "{E1926C3E-227A-4BC5-B69A-AC5AE3D24EA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterviewQuestionSelectorUnitTests", "InterviewQuestionSelectorUnitTests\InterviewQuestionSelectorUnitTests.csproj", "{29B50BA9-3190-4F20-B12E-C615AF3A1B3C}"
 EndProject
