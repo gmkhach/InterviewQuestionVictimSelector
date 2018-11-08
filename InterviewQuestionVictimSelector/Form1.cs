@@ -15,9 +15,9 @@ namespace InterviewQuestionVictimSelector
     {
         public Form1()
         {
+            InitializeComponent();
             cmd.CommandType = CommandType.StoredProcedure;
             populateNamePool();
-            InitializeComponent();
             resetQuestionPool();
             populateSelectQuestion();
             populateSelectName();
